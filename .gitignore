@@ -1,0 +1,10 @@
+.envrc
+.nvim.lua
+
+cmake-build-debug/
+bin/
+build/
+out/
+.cache/
+
+CMakeSettings.json

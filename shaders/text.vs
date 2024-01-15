@@ -1,17 +1,12 @@
 #version 330 core
 
-// Input vertex data, different for all executions of this shader.
-in vec3 vertexPosition;    // Vertex position (x, y, z)
-in vec2 vertexTexCoord;    // Vertex texture coordinates (u, v)
+layout (location = 0) in vec2 aPos;
+layout (location = 1) in vec2 aTex;
 
-// Output data; will be interpolated for each fragment.
-out vec2 fragTexCoord;
+out vec2 aTexCoord;
 
 void main()
 {
-    // Pass through the texture coordinates
-    fragTexCoord = vertexTexCoord;
-
-    // Transform the vertex position and output it
-    gl_Position = vec4(vertexPosition, 1.0);
+    gl_Position = vec4(aPos, 0.0, 0.0);
+    aTexCoord = aTex;
 }

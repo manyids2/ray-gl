@@ -63,13 +63,12 @@ void vertices_setup(vertices_t *v, grid_t *g) {
   for (int i = 0; i < g->nrows; ++i) {
     for (int j = 0; j < g->ncols; ++j) {
       int start = (j * g->nrows + i) * 4;
-      v->indices[idx++] = start;     // ◿ : Top-right
-      v->indices[idx++] = start + 2; //     Bottom-left
-      v->indices[idx++] = start + 1; //     Bottom-right
-
       v->indices[idx++] = start;     // ◸ : Top-right
       v->indices[idx++] = start + 3; //   : Top-left
       v->indices[idx++] = start + 2; //   : Bottom-left
+      v->indices[idx++] = start;     // ◿ : Top-right
+      v->indices[idx++] = start + 2; //     Bottom-left
+      v->indices[idx++] = start + 1; //     Bottom-right
     }
   }
 }
@@ -117,12 +116,12 @@ void vertices_setup_gl(vertices_t *v, grid_t *g) {
   glBufferData(GL_ELEMENT_ARRAY_BUFFER, g->nindices * sizeof(GLuint),
                v->indices, GL_STATIC_DRAW);
 
-  // layout (location = 0) in vec2 aPos;
+  // layout (location = 0) in vec2 vi_pos;
   glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, g->sumattribs * sizeof(float),
                         (void *)0);
   glEnableVertexAttribArray(0);
 
-  // layout (location = 1) in vec2 aTex;
+  // layout (location = 1) in vec2 vi_tex;
   glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, g->sumattribs * sizeof(float),
                         (void *)(2 * sizeof(float)));
   glEnableVertexAttribArray(1);

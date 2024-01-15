@@ -12,7 +12,7 @@ int main(void) {
   SetTargetFPS(60);
 
   grid_t g = {0};
-  grid_setup(&g, 2, 1);
+  grid_setup(&g, 1, 1);
   grid_print(&g);
 
   vertices_t v = {0};
@@ -30,6 +30,11 @@ int main(void) {
   Font font = LoadFontEx("fonts/FiraCode/FiraCodeNerdFont-Regular.ttf",
                          fontSize, 0, 250);
 
+  // Load PNG image
+  Image image = LoadImage("assets/test.png"); // Replace with your image path
+  Texture2D texture = LoadTextureFromImage(image);
+  UnloadImage(image); // Image data is no longer needed after texture creation
+
   // clang-format off
   while (!WindowShouldClose()) {
     BeginDrawing();
@@ -37,11 +42,11 @@ int main(void) {
     ClearBackground(GRAY);
 
     glUseProgram(shader.id);
-      glBindTexture(GL_TEXTURE_2D, font.texture.id);
+      glBindTexture(GL_TEXTURE_2D, texture.id);
       glBindVertexArray(v.VAO);
       glDrawElements(GL_TRIANGLES, g.nindices, GL_UNSIGNED_INT, 0);
     glUseProgram(0);
-    // DrawTexture(font.texture, 0, 0, DARKGREEN);
+    // DrawTexture(texture, 0, 0, DARKGREEN);
 
     EndDrawing();
   }

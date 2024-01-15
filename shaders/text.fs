@@ -1,13 +1,14 @@
 #version 330 core
 
-in vec2 aTexCoord;
+in vec2 vo_tex;
+in vec4 vo_color;
 
-out vec4 finalColor;
+out vec4 fo_color;
 
 uniform sampler2D texture0;
 
 void main()
 {
-    // finalColor = texture(texture0, aTexCoord);
-    finalColor = vec4(0.0, 0.5, 0.0, 1.0);
+    fo_color = texture(texture0, vo_tex);
+    // fo_color = vo_color;
 }

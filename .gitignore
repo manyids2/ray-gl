@@ -1,6 +1,7 @@
 .envrc
 .nvim.lua
 
+raylib/
 cmake-build-debug/
 bin/
 build/
@@ -8,3 +9,5 @@ out/
 .cache/
 
 CMakeSettings.json
+fonts
+num_glyphs.log

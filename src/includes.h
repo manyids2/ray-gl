@@ -1,4 +1,6 @@
 #include "raylib.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 #if defined(PLATFORM_DESKTOP)
 #if defined(GRAPHICS_API_OPENGL_ES2)
@@ -30,4 +32,3 @@
 #else // PLATFORM_ANDROID, PLATFORM_WEB
 #define GLSL_VERSION 100
 #endif
-
